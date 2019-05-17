@@ -1,7 +1,7 @@
 const arr1 = [1,5,3,2,9,75,34,23,10];
 
 function insertionSort(arr){
-    for (let i = 1;i<arr.length;i++){
+    for (let i = 1;i<arr.length;i++){ // starts loop from index 1 of the array, increments upwards.
         let char = arr[i] // selects the element that we will be comparing the previous ones to
         j= i-1 // initializes starting point for the reverse loop. 
         while (arr[j]>char && j>=0){ // sets condition for loop to run
