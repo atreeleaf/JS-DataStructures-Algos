@@ -24,11 +24,13 @@ let boardCheckerInit =
     '9':0,
 }
 
-function resetChecker(){
+function resetBoardChecker(){
     Object.assign(boardChecker,boardCheckerInit)
 }
 
-
+let test = [1,3,2,4,8,0]
+let result = test.sort((a,b)=>a-b)
+console.log(result)
 let board = 
 [
     [5, 3, 4, 6, 7, 8, 9, 1, 2], 
@@ -42,15 +44,33 @@ let board =
     [3, 4, 5, 2, 8, 6, 1, 7, 9]
 ]
 
-let newBoard = [[],[],[],[],[],[],[],[],[]]
 
-function doneOrNot(board){
+function checkHorizontal(board){
+    board.forEach((row)=>{
+
+    })
+}
+let flippedBoard = [[],[],[],[],[],[],[],[],[]]
+
+// function push3x3Array(board){
+//     let threeByThree = []
+//     for (let i = 0;i<board.length/3;i++){
+//         let j = 0
+//         for (j;j<board.length/3;j++){
+//             threeByThree.push(board[i][j])
+//         }
+//     }
+//     return threeByThree
+// }
+
+
+function columnChecker(board){
     for (let i = 0;i<board.length;i++){
         let j = 0
         for (j;j<board.length;j++){
             let verticalRow = board[j][i]
             boardChecker[verticalRow]++ 
-            newBoard[i].push(verticalRow)
+            flippedBoard[i].push(verticalRow)
         }
         
         let updatedBoardCount = Object.values(boardChecker)
@@ -60,17 +80,22 @@ function doneOrNot(board){
         if (passedChecker !== true){
             return `Failed Sudoku Puzzle at row${j},column ${i+1},`
         }
-        resetChecker();
+        resetBoardChecker();
     }
             return true
   }
 
-  function checkBothDimensions(board){
-      if (doneOrNot(board) === true && doneOrNot(newBoard) === true){
+  function validSolution(board){
+      if (columnChecker(board) === true && columnChecker(flippedBoard) === true){
           return 'Good shit nigga. You got it!'
       } else {
           return 'You failed this shit'
       }
   }
+ 
+  console.time('Function #1');
+  columnChecker(board)
+  console.timeEnd('Function #1')
 
-  console.log(checkBothDimensions(board))
+
+
