@@ -6,7 +6,7 @@ function isBalanced(string){
         '{': '}'
     }
 
-    for (char of string){
+    for (let char of string){
         if (char in map){
             stack.push(char)
         }
@@ -15,12 +15,12 @@ function isBalanced(string){
             if (!stack.includes(getKeyByValue(map,char))){
                 return false
             }
-            let last = stack.pop();
+         stack.pop();
         }
     }
 
 
-    return stack.length === 0;
+    return stack.length === 0
 }
 
 function getKeyByValue(object, value) {
@@ -30,4 +30,4 @@ function getKeyByValue(object, value) {
 // [[,[,[,]
 
 
-console.log(isBalanced('daskljd{}'))
+console.log(isBalanced('({})'))
