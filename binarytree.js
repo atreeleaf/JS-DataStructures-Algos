@@ -1,56 +1,62 @@
-class BinaryTree {
-    constructor(root){
-        this.root = null;
+class BinarySearchTree{
+    constructor(){
+    this.root = null;
     }
+
     insert(value){
-        let newNode = new Node(value); // creates instance of new node object - 
+        let newNode = new Node(value);
         if (this.root === null){
-            this.root = newNode; // checks to see if root is null
-            return this;
-        } 
+            this.root = newNode;
+            return
+        }
+        // check left of the root. 
+    
         let current = this.root;
-        while (true){
-            if (value < current.val){ // compares value 
-                if (current.left === null){
-                    current.left = newNode;
+        while(true){
+            if (value<current.value){
+                if (current.left === null){ // if left node is null, set it to equal new node. 
+                    current.left = newNode  
                     return this
-                } else {
-                    current = current.left;
-                }
-            } else if (value > current.val){
+                }  
+                
+                
+                current = current.left // if there is a value in the left node, check left node.. set current equal to the new node. 
+            }
+
+            if (value > current.value){
                 if (current.right === null){
                     current.right = newNode;
                     return this
-                } else {
-                    current = current.right;
                 }
+                current = current.right
             }
+            
         }
-        
-        
+       
     }
-};
+}
 
-
-class Node {
-    constructor(val){
-        this.val = val;
-        this.left = null;
-        this.right = null;
-
+class Node{
+    constructor(value){
+        this.value = value;
+        this.left = this.right = null;
     }
-    
+   
 }
 
 
+let tree = new BinarySearchTree
+tree.insert(2);
+tree.insert(7);
+tree.insert(8);
+tree.insert(9);
+tree.insert(1);
+tree.insert(3);
 
 
-let myTree = new BinaryTree();
 
 
 
 
-
-
-console.log(myTree)
+console.log(tree)
 
