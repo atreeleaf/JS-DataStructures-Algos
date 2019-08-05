@@ -1,8 +1,4 @@
 
-
-
-
-
 function Node(val,left,right,next) {
 this.val = val;
 this.left = left;
